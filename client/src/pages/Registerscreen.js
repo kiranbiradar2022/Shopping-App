@@ -1,56 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../actions/userActions";
+import { registerNewUser } from "../actions/userActions";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
-export default function Profilescreen() {
-  const loginstate = useSelector((state) => state.loginReducer);
-  const updateuserstate = useSelector((state) => state.updateReducer);
-  const currentUser = loginstate.currentUser;
-  const {loading , success,error} = updateuserstate
-  const dispatch = useDispatch()
-  const [name, setname] = useState(currentUser.name);
-  const [email, setemail] = useState(currentUser.email);
+
+export default function Registerscreen() {
+  const registerstate = useSelector((state) => state.registerNewUserReducer);
+
+  const { loading, error, success } = registerstate;
+
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+
   const [password, setpassword] = useState("");
   const [cpassword, setcpassword] = useState("");
 
-  function update(e) {
+  const dispatch = useDispatch();
 
-    e.preventDefault()
+  function register(e) {
+    e.preventDefault();
+    const user = {
+      name: name,
+      email: email,
+      password: password,
+    };
+
     if (password == cpassword) {
-      const updateduser = {
-        name: name,
-        email: email,
-        password: password,
-      };
-      dispatch(updateUser(currentUser._id , updateduser));
-    }
-    else{
-        alert('Passwords Not matched')
+      dispatch(registerNewUser(user));
+    } else {
+      alert("passwords not matched");
     }
   }
 
   return (
-    <div>
-      <div className="row justify-content-center">
-        <div className="col-md-5 card p-3" style={{ marginTop: "150px" }}>
+    <div className="login">
+      <div className="row justify-content-center ">
+        <div
+          className="col-md-5 card p-3 shadow p-3 mb-5 bg-white rounded"
+          style={{ marginTop: "70px" }}
+        >
           <div className="div">
-            <h2 className="text-center m-3">Update</h2>
+            <h2 style={{ display: "inline" }} className="text-center m-2">
+              REGISTER
+            </h2>
+            <i
+              style={{ fontSize: "25px" }}
+              className="fa fa-user-plus"
+              aria-hidden="true"
+            ></i>
 
             {loading && <Loader />}
             {error && (
-              <Error error="Something went wrong"></Error>
+              <Error error="Email Address is already registred"></Error>
             )}
-            {success && <Success success="Your Details updated succes , please re-login" />}
+            {success && <Success success="Your Registration is successfull" />}
 
-            <form onSubmit={update}>
+            <form onSubmit={register}>
               <input
                 type="text"
-                placeholder="name"
+                placeholder="Name"
                 className="form-control"
                 required
-                
                 value={name}
                 onChange={(e) => {
                   setname(e.target.value);
@@ -58,7 +69,7 @@ export default function Profilescreen() {
               />
               <input
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 className="form-control"
                 value={email}
                 required
@@ -69,7 +80,7 @@ export default function Profilescreen() {
 
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 className="form-control"
                 value={password}
                 required
@@ -80,7 +91,7 @@ export default function Profilescreen() {
 
               <input
                 type="password"
-                placeholder="confirm password"
+                placeholder="Confirm Password"
                 className="form-control"
                 value={cpassword}
                 required
@@ -89,13 +100,16 @@ export default function Profilescreen() {
                 }}
               />
 
-              <div className="text-right">
+              <div className="text-center">
                 <button type="submit" className="btn mt-3">
-                  UPDATE
+                  Register
                 </button>
               </div>
             </form>
           </div>
+          <a href="/login" className="m-3 reg">
+            Click Here To Login
+          </a>
         </div>
       </div>
     </div>

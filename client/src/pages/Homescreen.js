@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import Product from "../components/Product";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../actions/productActions";

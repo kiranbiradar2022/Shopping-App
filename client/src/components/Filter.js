@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterProducts } from "../actions/productActions";
+
 export default function Filter() {
   const [searchkey, setsearchkey] = useState("");
-  const [sort, setsort] = useState("popular");
   const [category, setcategory] = useState("all");
 
   const dispatch = useDispatch();

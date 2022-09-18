@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Adminscreen() {
   const userstate = useSelector((state) => state.loginReducer);

@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, getAllUsers } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Adminscreen from "./Adminscreen";
+
 export default function Userslist() {
   const getallusersstate = useSelector((state) => state.getAllUsersReducer);
 
@@ -20,10 +21,7 @@ export default function Userslist() {
     <div>
       <Adminscreen />
       <h2>Users List</h2>
-      <table
-        className="table table-bordered table-responsive-sm"
-        //style={{ marginLeft: "auto" }}
-      >
+      <table className="table table-bordered table-responsive-sm">
         <thead>
           <tr>
             <th>User Id</th>

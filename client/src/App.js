@@ -1,21 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import bootstrap from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-import Homescreen from "./screens/Homescreen";
-import Productdescscreen from "./screens/Productdescscreen";
-import Cartscreen from "./screens/Cartscreen";
-import Registerscreen from "./screens/Registerscreen";
-import Loginscreen from "./screens/Loginscreen";
-import Ordersscreen from "./screens/Ordersscreen";
-import Profilescreen from "./screens/Profilescreen";
-import Adminscreen from "./screens/Adminscreen";
-import Userslist from "./screens/Userslist";
-import Orderslist from "./screens/Orderslist";
-import Addproduct from "./screens/Addproduct";
-import Editproduct from "./screens/Editproduct";
-import Productslist from "./screens/Productslist";
+import Homescreen from "./pages/Homescreen";
+import Productdescscreen from "./pages/Productdescscreen";
+import Cartscreen from "./pages/Cartscreen";
+import Registerscreen from "./pages/Registerscreen";
+import Loginscreen from "./pages/Loginscreen";
+import Ordersscreen from "./pages/Ordersscreen";
+import Profilescreen from "./pages/Profilescreen";
+import Adminscreen from "./pages/Adminscreen";
+import Userslist from "./pages/Userslist";
+import Orderslist from "./pages/Orderslist";
+import Addproduct from "./pages/Addproduct";
+import Editproduct from "./pages/Editproduct";
+import Productslist from "./pages/Productslist";
 
 function App() {
   return (

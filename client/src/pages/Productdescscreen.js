@@ -51,9 +51,7 @@ export default function Productdescscreen() {
               <h1>
                 <b>Price : ₹ {product.price}</b>
               </h1>
-
               <hr />
-
               <h1>Select Quantity</h1>
 
               <select

@@ -1,64 +1,51 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerNewUser } from "../actions/userActions";
+import { updateUser } from "../actions/userActions";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
-export default function Registerscreen() {
-  const registerstate = useSelector((state) => state.registerNewUserReducer);
-
-  const { loading, error, success } = registerstate;
-
-  const [name, setname] = useState("");
-  const [email, setemail] = useState("");
-
+export default function Profilescreen() {
+  const loginstate = useSelector((state) => state.loginReducer);
+  const updateuserstate = useSelector((state) => state.updateReducer);
+  const currentUser = loginstate.currentUser;
+  const { loading, success, error } = updateuserstate;
+  const dispatch = useDispatch();
+  const [name, setname] = useState(currentUser.name);
+  const [email, setemail] = useState(currentUser.email);
   const [password, setpassword] = useState("");
   const [cpassword, setcpassword] = useState("");
 
-  const dispatch = useDispatch();
-
-  function register(e) {
+  function update(e) {
     e.preventDefault();
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-    };
-
-    if (password == cpassword) {
-      dispatch(registerNewUser(user));
+    if (password === cpassword) {
+      const updateduser = {
+        name: name,
+        email: email,
+        password: password,
+      };
+      dispatch(updateUser(currentUser._id, updateduser));
     } else {
-      alert("passwords not matched");
+      alert("Passwords Not matched");
     }
   }
 
   return (
-    <div className="login">
-      <div className="row justify-content-center ">
-        <div
-          className="col-md-5 card p-3 shadow p-3 mb-5 bg-white rounded"
-          style={{ marginTop: "70px" }}
-        >
+    <div>
+      <div className="row justify-content-center">
+        <div className="col-md-5 card p-3" style={{ marginTop: "150px" }}>
           <div className="div">
-            <h2 style={{ display: "inline" }} className="text-center m-2">
-              REGISTER
-            </h2>
-            <i
-              style={{ fontSize: "25px" }}
-              className="fa fa-user-plus"
-              aria-hidden="true"
-            ></i>
+            <h2 className="text-center m-3">MY PROFILE</h2>
 
             {loading && <Loader />}
-            {error && (
-              <Error error="Email Address is already registred"></Error>
+            {error && <Error error="Something went wrong"></Error>}
+            {success && (
+              <Success success="Your Details updated succes , please re-login" />
             )}
-            {success && <Success success="Your Registration is successfull" />}
 
-            <form onSubmit={register}>
+            <form onSubmit={update}>
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="name"
                 className="form-control"
                 required
                 value={name}
@@ -68,7 +55,7 @@ export default function Registerscreen() {
               />
               <input
                 type="text"
-                placeholder="Email"
+                placeholder="email"
                 className="form-control"
                 value={email}
                 required
@@ -79,7 +66,7 @@ export default function Registerscreen() {
 
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="password"
                 className="form-control"
                 value={password}
                 required
@@ -90,7 +77,7 @@ export default function Registerscreen() {
 
               <input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="confirm password"
                 className="form-control"
                 value={cpassword}
                 required
@@ -99,16 +86,13 @@ export default function Registerscreen() {
                 }}
               />
 
-              <div className="text-center">
+              <div className="text-right">
                 <button type="submit" className="btn mt-3">
-                  Register
+                  UPDATE
                 </button>
               </div>
             </form>
           </div>
-          <a href="/login" className="m-3 reg">
-            Click Here To Login
-          </a>
         </div>
       </div>
     </div>

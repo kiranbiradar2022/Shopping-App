@@ -1,53 +1,80 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { getProductById, updateProduct } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../actions/productActions";
-import Success from "../components/Success";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
+import Success from "../components/Success";
 import Adminscreen from "./Adminscreen";
 
-export default function Addproduct() {
+export default function Editproduct() {
+  const dispatch = useDispatch();
+  const productstate = useSelector((state) => state.getProductByIdReducer);
+
+  const { product, error, loading } = productstate;
+
+  const updateproductstate = useSelector((state) => state.updateProductReducer);
+
+  const { success, updateerror, updateloading } = updateproductstate;
+
   const [name, setname] = useState("");
   const [price, setprice] = useState();
   const [countinstock, setcountinstock] = useState();
   const [imageurl, setimageurl] = useState("");
   const [category, setcategory] = useState("");
   const [description, setdescription] = useState("");
-  const dispatch = useDispatch();
 
-  const addproductstate = useSelector((state) => state.addProductReducer);
+  const { productid } = useParams();
 
-  const { success, error, loading } = addproductstate;
+  useEffect(() => {
+    if (product) {
+      if (product._id === productid) {
+        setname(product.name);
+        setprice(product.price);
+        setdescription(product.description);
+        setimageurl(product.image);
+        setcategory(product.category);
+        setcountinstock(product.countInStock);
+      } else {
+        dispatch(getProductById(productid));
+      }
+    } else {
+      dispatch(getProductById(productid));
+    }
+  }, [dispatch, product]);
 
-  const addproduct = (e) => {
+  function editproduct(e) {
     e.preventDefault();
-    const product = {
+    const updatedproduct = {
       name: name,
       price: price,
-      countInStock: countinstock,
-      image: imageurl,
       description: description,
-      category,
+      countInStock: countinstock,
+      category: category,
+      image: imageurl,
     };
 
-    dispatch(addProduct(product));
-  };
+    dispatch(updateProduct(productid, updatedproduct));
+  }
+
   return (
     <div>
       <Adminscreen />
-      <div className="row justify-content-center">
-        <div className="col-md-8 shadow p-3 mb-5 bg-white rounded">
-          {success && <Success success="Product Added Succesfully" />}
-          {loading && <Loader />}
-          {error && <Error error="Something went wrong" />}
+      <h2>Edit Product</h2>
+      {loading && <Loader />}
 
-          <h2>Add Product</h2>
-          <form onSubmit={addproduct}>
+      {updateloading && <Loader />}
+      {updateerror && <Error error="Something went wrong" />}
+      {success && <Success success="Product Updated Successfully" />}
+      {error && <Error error="something went wrong" />}
+      {product && (
+        <div>
+          <form onSubmit={editproduct}>
             <input
               type="text"
               className="form-control mb-2 mr-sm-2"
-              placeholder="name"
+              placeholder="Name"
               required
               value={name}
               onChange={(e) => {
@@ -57,7 +84,7 @@ export default function Addproduct() {
             <input
               type="text"
               className="form-control mb-2 mr-sm-2"
-              placeholder="price"
+              placeholder="Price"
               value={price}
               required
               onChange={(e) => {
@@ -68,7 +95,7 @@ export default function Addproduct() {
               type="text"
               required
               className="form-control mb-2 mr-sm-2"
-              placeholder="decription"
+              placeholder="Description"
               value={description}
               onChange={(e) => {
                 setdescription(e.target.value);
@@ -78,7 +105,7 @@ export default function Addproduct() {
               type="text"
               required
               className="form-control mb-2 mr-sm-2"
-              placeholder="imageurl"
+              placeholder="Image Url"
               value={imageurl}
               onChange={(e) => {
                 setimageurl(e.target.value);
@@ -88,7 +115,7 @@ export default function Addproduct() {
               type="text"
               required
               className="form-control mb-2 mr-sm-2"
-              placeholder="category"
+              placeholder="Category"
               value={category}
               onChange={(e) => {
                 setcategory(e.target.value);
@@ -98,22 +125,22 @@ export default function Addproduct() {
               type="text"
               required
               className="form-control mb-2 mr-sm-2"
-              placeholder="count in stock"
+              placeholder="Count In Stock"
               value={countinstock}
               onChange={(e) => {
                 setcountinstock(e.target.value);
               }}
             />
             <button
-              className="btn mt-5"
+              className="btn mt-3"
               type="submit"
-              style={{ float: "left" }}
+              style={{ float: "left", marginLeft: "10px" }}
             >
-              Add Product
+              Update Product
             </button>
           </form>
         </div>
-      </div>
+      )}
     </div>
   );
 }

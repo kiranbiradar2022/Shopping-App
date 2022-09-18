@@ -28,7 +28,6 @@ export default function Cartscreen() {
                 <th>Delete</th>
               </tr>
             </thead>
-
             <tbody>
               {cartItems.map((item) => {
                 return (

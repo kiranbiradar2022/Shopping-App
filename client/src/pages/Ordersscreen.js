@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdersByUserId } from "../actions/orderActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
-import { Link } from "react-router-dom";
 export default function Ordersscreen() {
   const orderstate = useSelector((state) => state.getOrdersByUserIdReducer);
 
   const { orders, error, loading } = orderstate;
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
       dispatch(getOrdersByUserId());

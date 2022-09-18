@@ -10,7 +10,6 @@ export default function Product({ product }) {
             <img src={product.image} className="img-fluid top" />
           </div>
           <h1 className="mt-3 ">{product.name}</h1>
-
           <Rating
             style={{ color: "orange" }}
             initialRating={product.rating}
@@ -18,7 +17,6 @@ export default function Product({ product }) {
             fullSymbol="fa fa-star fa-1x"
             readonly={true}
           />
-
           <h1 className="mt-1">Price : {product.price}</h1>
         </Link>
         <div></div>

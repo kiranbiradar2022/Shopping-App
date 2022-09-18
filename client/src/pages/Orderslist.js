@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
@@ -33,7 +33,6 @@ export default function Orderslist() {
             <th>Transaction Id</th>
           </tr>
         </thead>
-
         <tbody>
           {orders &&
             orders.map((order) => {

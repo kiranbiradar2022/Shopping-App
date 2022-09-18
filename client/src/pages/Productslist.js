@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { Link } from "react-router-dom";
 import { getAllProducts, deleteProduct } from "../actions/productActions";
 import Adminscreen from "./Adminscreen";
+
 export default function Productslist() {
   const dispatch = useDispatch();
   const getallproductsstate = useSelector(
@@ -16,6 +17,7 @@ export default function Productslist() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
+
   return (
     <div>
       <Adminscreen />
@@ -31,7 +33,6 @@ export default function Productslist() {
             <th>Actions</th>
           </tr>
         </thead>
-
         <tbody>
           {loading && <Loader />}
           {error && <Error error="something went wrong" />}
