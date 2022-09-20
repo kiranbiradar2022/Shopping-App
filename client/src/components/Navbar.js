@@ -1,6 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../actions/userActions";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 export default function Navbar() {
   const cartreducer = useSelector((state) => state.cartReducer);
 
@@ -18,6 +24,16 @@ export default function Navbar() {
             src="https://www.freepnglogos.com/uploads/flipkart-logo-png/flipkart-inventory-management-system-zap-inventory-1.png"
             style={{ height: "30px", width: "60px", marginLeft: "70px" }}
           />
+          <h2
+            style={{
+              display: "inline-block",
+              marginLeft: "20px",
+              marginTop: "5px",
+              fontStyle: "italic",
+            }}
+          >
+            Flipkart
+          </h2>
         </a>
         <button
           className="navbar-toggler"
@@ -46,7 +62,11 @@ export default function Navbar() {
                   aria-expanded="false"
                 >
                   <i
-                    style={{ color: "white" }}
+                    style={{
+                      color: "white",
+                      marginTop: "10px",
+                      fontSize: "20px",
+                    }}
                     className="fa fa-user"
                     aria-hidden="true"
                   ></i>{" "}
@@ -62,6 +82,14 @@ export default function Navbar() {
                   <a className="dropdown-item" href="/orders">
                     Orders
                   </a>
+                  {currentUser.isAdmin ? (
+                    <a className="dropdown-item" href="/admin">
+                      Admin
+                    </a>
+                  ) : (
+                    " "
+                  )}
+
                   <li
                     className="dropdown-item"
                     onClick={() => {
@@ -74,7 +102,12 @@ export default function Navbar() {
               </div>
             ) : (
               <li className="nav-item">
-                <a className="nav-link" href="/login">
+                <a
+                  className="nav-link"
+                  href="/login"
+                  style={{ marginTop: "5px" }}
+                >
+                  <LoginRoundedIcon style={{ marginRight: "5px" }} />
                   Login
                 </a>
               </li>
@@ -82,7 +115,11 @@ export default function Navbar() {
 
             <li className="nav-item">
               <a className="nav-link" href="/cart">
-                <i class="fas fa-shopping-cart"></i> {cartItems.length}
+                <IconButton aria-label="cart">
+                  <StyledBadge badgeContent={cartItems.length}>
+                    <ShoppingCartIcon style={{ color: "white" }} />
+                  </StyledBadge>
+                </IconButton>
               </a>
             </li>
           </div>
@@ -91,3 +128,11 @@ export default function Navbar() {
     </div>
   );
 }
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    border: "0.2px solid white",
+    color: "white",
+    fontSize: "13px",
+  },
+}));

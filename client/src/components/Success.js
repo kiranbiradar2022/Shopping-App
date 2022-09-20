@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Alert } from "@mui/material";
 export default function Success({ success }) {
   return (
     <div>
-      <div className="alert alert-success" role="alert">
+      <Alert variant="filled" severity="success">
         {success}
-      </div>
+      </Alert>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { addToCart } from "../actions/cartActions";
 import { getProductById } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 export default function Productdescscreen() {
   const { id } = useParams();
@@ -41,12 +42,14 @@ export default function Productdescscreen() {
                 <b>{product.name}</b>
               </h1>
               <hr />
-              <img src={product.image} className="img-fluid m-3 bigimg" />
+              <div className="text-center">
+                <img src={product.image} className="img-fluid m-3 bigimg" />
+              </div>
               <p className="para">{product.description}</p>
             </div>
           </div>
 
-          <div className="col-md-6 text-left">
+          <div className="col-md-6 text-left mt-3">
             <div className="m-2 shadow p-3 mb-5 bg-white rounded">
               <h1>
                 <b>Price : ₹ {product.price}</b>
@@ -69,12 +72,14 @@ export default function Productdescscreen() {
 
               {product.countInStock > 0 ? (
                 <button className="btn btn-dark" onClick={addtocart}>
+                  <AddShoppingCartIcon style={{ marginRight: "5px" }} />
                   ADD TO CART
                 </button>
               ) : (
                 <div>
                   <h1>Out Of StocK</h1>
                   <button className="btn" disabled onClick={addtocart}>
+                    <AddShoppingCartIcon />
                     ADD TO CART
                   </button>
                 </div>

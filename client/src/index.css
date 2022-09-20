@@ -34,13 +34,12 @@ h1{
 
 .img-fluid{
   height: 200px !important;
-  text-align: center !important;
+  
 }
 
 .bigimg{
   height: 200px !important;
-  width: 200px !important;
-  
+  width: 250px !important;
 }
 p{
   text-align: left !important;
@@ -60,6 +59,7 @@ h2{
   font-size: 15px;
   color: rgb(1, 1, 51) !important;
   font-style: italic;
+  font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 

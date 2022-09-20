@@ -9,7 +9,6 @@ export default function Ordersscreen() {
   const { orders, error, loading } = orderstate;
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
       dispatch(getOrdersByUserId());

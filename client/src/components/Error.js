@@ -1,11 +1,12 @@
+import { Alert } from "@mui/material";
 import React from "react";
 
 export default function Error({ error }) {
   return (
     <div>
-      <div className="alert alert-danger" role="alert">
+      <Alert variant="filled" severity="error">
         {error}
-      </div>
+      </Alert>
     </div>
   );
 }

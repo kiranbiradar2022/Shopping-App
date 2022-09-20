@@ -18,6 +18,7 @@ import {
   deleteUserReducer,
 } from "./reducers/userReducer";
 import {
+  getOrderByIdReducer,
   getAllOrdersReducer,
   getOrdersByUserIdReducer,
   placeOrderReducer,
@@ -30,7 +31,7 @@ const finalReducer = combineReducers({
   registerNewUserReducer: registerNewUserReducer,
   loginReducer: loginReducer,
   placeOrderReducer: placeOrderReducer,
-  getProductByIdReducer: getProductByIdReducer,
+  getOrderByIdReducer: getOrderByIdReducer,
   getOrdersByUserIdReducer: getOrdersByUserIdReducer,
   updateReducer: updateReducer,
   getAllUsersReducer: getAllUsersReducer,

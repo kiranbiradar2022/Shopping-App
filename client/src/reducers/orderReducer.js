@@ -46,6 +46,30 @@ export const getOrdersByUserIdReducer = (state = {}, action) => {
   }
 };
 
+export const getOrderByIdReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_ORDERBYID_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "GET_ORDERBYID_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        order: action.payload,
+      };
+    case "GET_ORDERBYID_FAILED":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    default:
+      return { state };
+  }
+};
+
 export const getAllOrdersReducer = (state = { orders: [] }, action) => {
   switch (action.type) {
     case "GET_ALLORDERS_REQUEST":

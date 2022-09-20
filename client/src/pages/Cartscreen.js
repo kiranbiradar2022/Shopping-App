@@ -17,7 +17,7 @@ export default function Cartscreen() {
     <div className="home">
       <div className="row  justify-content-center">
         <div className="col-md-8 card text-center shadow p-3 mb-5 mt-5 bg-white rounded">
-          <h2 className="text-center m-5">MY CART</h2>
+          <h2 className="text-center m-4">MY CART</h2>
           <table className="table table-bordered table-responsives-sm">
             <thead>
               <tr>
@@ -49,7 +49,11 @@ export default function Cartscreen() {
                     <td>{item.quantity * item.price}</td>
                     <td>
                       <i
-                        style={{ color: "red", cursor: "pointer" }}
+                        style={{
+                          color: "red",
+                          cursor: "pointer",
+                          fontSize: "17px",
+                        }}
                         class="far fa-trash-alt"
                         onClick={() => {
                           dispatch(deleteFromCart(item));

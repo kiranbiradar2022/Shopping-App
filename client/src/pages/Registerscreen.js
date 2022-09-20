@@ -26,7 +26,7 @@ export default function Registerscreen() {
       password: password,
     };
 
-    if (password == cpassword) {
+    if (password === cpassword) {
       dispatch(registerNewUser(user));
     } else {
       alert("passwords not matched");
@@ -68,7 +68,7 @@ export default function Registerscreen() {
                 }}
               />
               <input
-                type="text"
+                type="email"
                 placeholder="Email"
                 className="form-control"
                 value={email}

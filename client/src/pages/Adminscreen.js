@@ -6,6 +6,7 @@ export default function Adminscreen() {
   const userstate = useSelector((state) => state.loginReducer);
 
   const currentUser = userstate.currentUser;
+
   useEffect(() => {
     if (currentUser) {
       if (!currentUser.isAdmin) {
