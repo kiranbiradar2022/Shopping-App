@@ -41,7 +41,7 @@ export default function Addproduct() {
           {loading && <Loader />}
           {error && <Error error="Something went wrong" />}
 
-          <h2>Add Product</h2>
+          <h2 className="div">Add Product</h2>
           <form onSubmit={addproduct}>
             <input
               type="text"

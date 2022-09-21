@@ -4,31 +4,31 @@ const productSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     image: {
       type: String,
-      require: true,
+      required: true,
     },
     category: {
       type: String,
-      require: true,
+      required: true,
     },
     description: {
       type: String,
-      require: true,
+      required: true,
     },
     price: {
       type: Number,
-      require: true,
+      required: true,
     },
     countInStock: {
       type: Number,
-      require: true,
+      required: true,
     },
     rating: {
       type: Number,
-      require: true,
+      required: true,
       default: 0,
     },
   },

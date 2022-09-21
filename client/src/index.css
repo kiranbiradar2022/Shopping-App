@@ -37,6 +37,9 @@ h1{
   
 }
 
+.div{
+  text-align: center !important;
+}
 .bigimg{
   height: 200px !important;
   width: 250px !important;
@@ -44,16 +47,22 @@ h1{
 p{
   text-align: left !important;
 }
+.mid{
+text-align: center;width: 100%;
 
+}
 h2{
   font-size: 25px !important;
   font-weight: bold !important;
 }
 .btn{
-  background-color: black !important;
+  background-color: rgb(1, 1, 51) !important;
   color: white !important;
   width: 200px !important;
   
+}
+.cart{
+  height: 100vh !important;
 }
 .para{
   font-size: 15px;

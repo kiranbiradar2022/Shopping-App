@@ -21,7 +21,7 @@ export default function Productslist() {
   return (
     <div>
       <Adminscreen />
-      <h2>Products list</h2>
+      <h2 className="div">Products list</h2>
 
       <table className="table table-bordered table-responsive-sm">
         <thead>

@@ -19,10 +19,10 @@ export default function Adminscreen() {
 
   return (
     <div>
-      <div className="row justify-content-center mt-2">
-        <div className="col-md-10">
+      <div className="row justify-content-center mt-2 ">
+        <div className="col-md-10 div">
           <h2>Admin Panel</h2>
-          <ul className="admin p-2">
+          <ul className="admin p-2 div">
             <li>
               <Link to="/admin/userslist" style={{ color: "black" }}>
                 UsersList

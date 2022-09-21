@@ -14,7 +14,7 @@ export default function Cartscreen() {
   );
 
   return (
-    <div className="home">
+    <div className="home cart">
       <div className="row  justify-content-center">
         <div className="col-md-8 card text-center shadow p-3 mb-5 mt-5 bg-white rounded">
           <h2 className="text-center m-4">MY CART</h2>

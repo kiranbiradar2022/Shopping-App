@@ -21,7 +21,7 @@ export default function Orderslist() {
       <Adminscreen />
       {loading && <Loader />}
       {error && <Error error="something went wrong" />}
-      <h2>Orders List</h2>
+      <h2 className="div">Orders List</h2>
       <table className="table table-bordered table-responsive-sm">
         <thead>
           <tr>

@@ -107,7 +107,7 @@ export default function Registerscreen() {
               </div>
             </form>
           </div>
-          <a href="/login" className="m-3 reg">
+          <a href="/login" className="m-3 reg div">
             Click Here To Login
           </a>
         </div>

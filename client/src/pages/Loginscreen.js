@@ -31,7 +31,7 @@ export default function Loginscreen() {
 
   return (
     <div className="login">
-      <div className="row justify-content-center ">
+      <div className="row justify-content-center">
         <div
           className="col-md-4 card p-3 shadow p-3 mb-5 bg-white rounded"
           style={{ marginTop: "100px" }}
@@ -72,7 +72,7 @@ export default function Loginscreen() {
                 }}
               />
 
-              <div className="text-center">
+              <div className="div">
                 <button type="submit" className="btn mt-3">
                   Login
                 </button>
@@ -80,7 +80,7 @@ export default function Loginscreen() {
             </form>
           </div>
 
-          <a href="/register" className="mt-3 reg">
+          <a href="/register" className="mt-3 reg div">
             Click Here To Register
           </a>
         </div>

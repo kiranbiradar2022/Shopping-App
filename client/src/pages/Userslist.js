@@ -20,7 +20,7 @@ export default function Userslist() {
   return (
     <div>
       <Adminscreen />
-      <h2>Users List</h2>
+      <h2 className="div">Users List</h2>
       <table className="table table-bordered table-responsive-sm">
         <thead>
           <tr>
